@@ -1,0 +1,10 @@
+# System Files
+.DS_Store
+.idea
+node_modules
+Thumbs.db
+package.json
+package-lock.json
+.cache
+.firebaserc
+firebase.json
