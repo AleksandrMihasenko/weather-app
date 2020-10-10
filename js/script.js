@@ -1,6 +1,25 @@
 const cityForm = document.querySelector('.change-location');
+const card = document.querySelector('.card');
+const details = document.querySelector('.details');
 
 
+const updateApp = (data) => {
+    const {cityDetails: cityInfo, weather: weatherInfo} = data;
+    
+    //update app template
+    details.innerHTML = `
+        <h5 class="my-3">${cityInfo.EnglishName}</h5>
+        <div class="my-3">${weatherInfo.WeatherText}</div>
+        <div class="display-4 my-4">
+            <span>${weatherInfo.Temperature.Metric.Value}</span>
+            <span>&deg;C</span>
+        </div>
+    `;
+    
+    if (card.classList.contains('d-none')) {
+        card.classList.remove('d-none');
+    }
+};
 
 const updateCity = async (city) => {
     const cityDetails = await getCity(city);
@@ -21,6 +40,6 @@ cityForm.addEventListener('submit', event => {
     
     //update app
     updateCity(city)
-        .then(data => {})
+        .then(data => updateApp(data))
         .catch(err => console.log(err));
 });
