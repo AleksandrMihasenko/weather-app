@@ -1,6 +1,8 @@
 const cityForm = document.querySelector('.change-location');
 const card = document.querySelector('.card');
 const details = document.querySelector('.details');
+const time = document.querySelector('.time');
+const icon = document.querySelector('.icon img');
 
 
 const updateApp = (data) => {
@@ -19,6 +21,16 @@ const updateApp = (data) => {
     if (card.classList.contains('d-none')) {
         card.classList.remove('d-none');
     }
+    
+    //update icons and images
+    const iconSrc = `images/icons/${weatherInfo.WeatherIcon}.svg`;
+    icon.setAttribute('src', iconSrc);
+    
+    let timeSrc = weatherInfo.IsDayTime
+        ? 'images/day.svg'
+        : 'images/night.svg';
+
+    time.setAttribute('src', timeSrc);
 };
 
 const updateCity = async (city) => {
